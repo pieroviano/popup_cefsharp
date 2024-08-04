@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFrameworks>net462;net8.0-windows</TargetFrameworks>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<AssemblyTitle>popup_cefsharp</AssemblyTitle>
+		<Product>popup_cefsharp</Product>
+		<Copyright>Copyright ©  2021</Copyright>
+		<Platforms>x86;x64</Platforms>
+		<UseWindowsForms>true</UseWindowsForms>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="chromiumembeddedframework.runtime.win-x64" Version="126.2.18" Condition="'$(TargetFramework)'=='net462'" />
+		<PackageReference Include="chromiumembeddedframework.runtime.win-x86" Version="126.2.18" Condition="'$(TargetFramework)'=='net462'" />
+		<PackageReference Include="CefSharp.Common" Version="126.2.180" />
+		<PackageReference Include="CefSharp.WinForms" Version="126.2.180" Condition="'$(TargetFramework)'=='net462'" />
+		<PackageReference Include="CefSharp.WinForms.NETCore" Version="126.2.180" Condition="'$(TargetFramework)'=='net8.0-windows'" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Update="FrmMain.cs">
+			<SubType>Form</SubType>
+		</Compile>
+		<Compile Update="FrmMain.Designer.cs">
+			<DependentUpon>FrmMain.cs</DependentUpon>
+		</Compile>
+		<EmbeddedResource Update="FrmMain.resx">
+			<DependentUpon>FrmMain.cs</DependentUpon>
+		</EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="page_test.html" />
+		<Content Include="popup_test.html" />
+	</ItemGroup>
+</Project>
